@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import program from 'commander';
+import { program } from '..';
 
-program.version('1.0.0');
+program.version('0.0.1');
 program.description('Compares two configuration files and shows a difference.');
 
 program.parse(process.argv);
