@@ -1,7 +1,10 @@
+import fs from 'fs';
 import genDiff from '../src';
 
 test('genDiff', () => {
-  const result = '{ \n    host: hexlet.io\n  + timeout: 20\n  - timeout: 50\n  - proxy: 123.234.53.22\n  - follow: false\n  + verbose: true\n}';
+  const fd = fs.openSync(`${__dirname}/__fixtures__/flatJson.txt`);
+  const contentFile = fs.readFileSync(fd, 'utf8');
+  fs.closeSync(fd);
 
-  expect(genDiff('before.json', 'after.json')).toEqual(result);
+  expect(genDiff('before.json', 'after.json')).toEqual(contentFile);
 });
